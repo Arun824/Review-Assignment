@@ -30,17 +30,16 @@ async function getDataAndWriteFile(code) {
 }
 
 
-Promise.all([getDataAndWriteFile('TRSSG1-GR'),getDataAndWriteFile('BSD1050-GR'),getDataAndWriteFile('606-DR'),getDataAndWriteFile('8010-DP'),getDataAndWriteFile('PCFFZM-DP')]).then(() => {
-   console.log('file has created');
+Promise.all(codes.map(item => {
+    getDataAndWriteFile(item);
+})).then(() => {
+    console.log('file created');
 }).catch(err => {
     console.log(err);
 })
 
-
-// Promise.all(codes.map(item => {
-//     getDataAndWriteFile(item);
-// })).then(() => {
-//     console.log('file created');
+// Promise.all([getDataAndWriteFile('TRSSG1-GR'),getDataAndWriteFile('BSD1050-GR'),getDataAndWriteFile('606-DR'),getDataAndWriteFile('8010-DP'),getDataAndWriteFile('PCFFZM-DP')]).then(() => {
+//    console.log('file has created');
 // }).catch(err => {
 //     console.log(err);
 // })
